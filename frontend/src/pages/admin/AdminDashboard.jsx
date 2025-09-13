@@ -1,0 +1,1 @@
+import React from 'react'; export default function AdminDashboard(){ return (<div className='bg-white rounded-2xl p-6 shadow'><h2 className='text-2xl font-bold'>Tableau de bord</h2><p className='text-gray-600 mt-2'>Gérez les utilisateurs, catégories, formations, leçons, packs et promotions.</p></div>)}

@@ -1,0 +1,1 @@
+// MuxUpload component placeholder

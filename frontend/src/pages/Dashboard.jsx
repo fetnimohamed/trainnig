@@ -1,0 +1,5 @@
+import React,{useEffect,useState} from 'react'; import api from '../api';
+export default function Dashboard(){ const [me,setMe]=useState(null); const [sub,setSub]=useState(null);
+  useEffect(()=>{ api.get('/api/users/me').then(r=>setMe(r.data)).catch(()=>{}); api.get('/api/subscriptions/mine').then(r=>setSub(r.data)).catch(()=>{}); },[]);
+  if(!me) return <div>Veuillez vous connecter.</div>;
+  return (<div><h2 className="text-3xl font-black mb-2">Mon espace</h2><div className="bg-white rounded-3xl p-4 shadow"><div><span className="font-semibold">Nom:</span> {me.name}</div><div><span className="font-semibold">Email:</span> {me.email}</div><div><span className="font-semibold">Rôle:</span> {me.role}</div></div><div className="bg-white rounded-3xl p-4 shadow mt-4"><h3 className="font-semibold">Abonnement</h3>{sub ? (<div className="text-sm text-gray-700">Plan: {sub.plan} — statut: {sub.status} — fin: {new Date(sub.current_period_end).toLocaleDateString()}</div>):(<div className="text-sm text-gray-500">Aucun abonnement actif.</div>)}</div></div>) }
